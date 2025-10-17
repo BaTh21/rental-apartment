@@ -7,15 +7,22 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          // Put all node_modules into a separate vendor chunk
           if (id.includes('node_modules')) {
+            if (id.includes('react')) {
+              return 'react-vendor'
+            }
+            if (id.includes('html2canvas')) {
+              return 'html2canvas-vendor'
+            }
+            if (id.includes('purify')) {
+              return 'purify-vendor'
+            }
+            // fallback for all other node_modules
             return 'vendor'
           }
-          // You can add more custom chunk splitting here
         }
       }
     },
-    // Optional: increase chunk size warning limit (default is 500 KB)
-    chunkSizeWarningLimit: 1000, // in KB
+    chunkSizeWarningLimit: 2000, // 1 MB
   }
 })
