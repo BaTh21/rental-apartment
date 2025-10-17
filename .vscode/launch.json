@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: FastAPI",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "main:app",
+                "--host",
+                "0.0.0.0",
+                "--port",
+                "8000",
+                "--reload"
+            ],
+            "jinja": false,  // Set to false if not using Jinja templates
+            "cwd": "${workspaceFolder}/backend/app",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/backend/app"
+            },
+            "justMyCode": false  // Optional: Debug into external libraries if needed
+        }
+    ]
+}
